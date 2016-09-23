@@ -1,4 +1,23 @@
 ================
+Version  3.22.0
+================
+
+- No changes
+
+================
+Version  3.21.92
+================
+
+- Fix a crash on non-udev platforms (#770686)
+- Translation updates
+
+================
+Version  3.21.90
+================
+
+- No changes
+
+================
 Version   3.21.4
 ================
 
