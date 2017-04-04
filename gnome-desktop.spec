@@ -4,15 +4,15 @@
 #
 Name     : gnome-desktop
 Version  : 3.24.0
-Release  : 6
+Release  : 7
 URL      : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.0.tar.xz
 Summary  : Utility library for loading .desktop files
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0
+Requires: gnome-desktop-data
 Requires: gnome-desktop-lib
 Requires: gnome-desktop-bin
-Requires: gnome-desktop-data
 Requires: gnome-desktop-doc
 Requires: gnome-desktop-locales
 BuildRequires : docbook-xml
@@ -99,7 +99,7 @@ locales components for the gnome-desktop package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1490636635
+export SOURCE_DATE_EPOCH=1491316901
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -111,7 +111,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1490636635
+export SOURCE_DATE_EPOCH=1491316901
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-desktop-3.0
@@ -125,6 +125,8 @@ rm -rf %{buildroot}
 
 %files data
 %defattr(-,root,root,-)
+/usr/lib64/girepository-1.0/GnomeDesktop-3.0.typelib
+/usr/share/gir-1.0/*.gir
 /usr/share/gnome/gnome-version.xml
 /usr/share/help/C/fdl/index.docbook
 /usr/share/help/C/gpl/index.docbook
@@ -202,10 +204,8 @@ rm -rf %{buildroot}
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-rr.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-wall-clock.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-xkb-info.h
-/usr/lib64/girepository-1.0/GnomeDesktop-3.0.typelib
 /usr/lib64/libgnome-desktop-3.so
 /usr/lib64/pkgconfig/gnome-desktop-3.0.pc
-/usr/share/gir-1.0/*.gir
 
 %files doc
 %defattr(-,root,root,-)
