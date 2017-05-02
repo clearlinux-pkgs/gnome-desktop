@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.24.1
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.1.tar.xz
 Summary  : Utility library for loading .desktop files
