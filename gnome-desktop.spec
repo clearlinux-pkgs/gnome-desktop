@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.24.2
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -27,12 +27,16 @@ BuildRequires : libxml2-python
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
+BuildRequires : pkgconfig(gio-2.0)
+BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gsettings-desktop-schemas)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(iso-codes)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xkeyboard-config)
+BuildRequires : six
+BuildRequires : six-python
 
 %description
 gnome-desktop
@@ -102,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1494351846
+export SOURCE_DATE_EPOCH=1502729318
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -114,7 +118,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1494351846
+export SOURCE_DATE_EPOCH=1502729318
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-desktop-3.0
