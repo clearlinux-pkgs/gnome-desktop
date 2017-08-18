@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.24.2
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.24/gnome-desktop-3.24.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -35,8 +35,6 @@ BuildRequires : pkgconfig(iso-codes)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xkeyboard-config)
-BuildRequires : six
-BuildRequires : six-python
 
 %description
 gnome-desktop
@@ -106,7 +104,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1502729318
+export SOURCE_DATE_EPOCH=1503068885
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -118,7 +116,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1502729318
+export SOURCE_DATE_EPOCH=1503068885
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-desktop-3.0
