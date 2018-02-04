@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.26.2
-Release  : 16
+Release  : 17
 URL      : https://download.gnome.org/sources/gnome-desktop/3.26/gnome-desktop-3.26.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.26/gnome-desktop-3.26.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -105,9 +105,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1509981053
+export SOURCE_DATE_EPOCH=1517763706
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -117,7 +117,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1509981053
+export SOURCE_DATE_EPOCH=1517763706
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-desktop-3.0
