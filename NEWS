@@ -1,15 +1,40 @@
 ==============
-Version 3.26.2
+Version 3.28.0
 ==============
 
-- Translation updates
+- No changes
 
 ===============
-Version 3.26.1
+Version 3.27.92
 ===============
 
-- Fix problems with thumbnailer sandboxing (#787072)
-- Translation updates
+- idle-monitor fixes
+- Several fixes for compilation warnings
+- Updated translations
+
+===============
+Version 3.27.90
+===============
+
+- Miscellaneous improvements to the thumbnailer code
+- Remove unused gnome_desktop_thumbnail_has_uri()
+- Replace GdkColor methods with GdkRGBA methods
+
+===============
+Version 3.27.2
+===============
+
+- No changes
+
+===============
+Version 3.27.1
+===============
+
+- Change default Japanish input source to KCC
+- wall-clock: respect new clock-show-weekday setting
+- Remove some obsolete API's in thumbnailer
+- Modernize autotools configuration a bit
+- Translations updates
 
 ===============
 Version 3.26.0
