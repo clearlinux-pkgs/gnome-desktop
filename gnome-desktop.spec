@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.28.0
-Release  : 18
+Release  : 19
 URL      : https://download.gnome.org/sources/gnome-desktop/3.28/gnome-desktop-3.28.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.28/gnome-desktop-3.28.0.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -105,8 +105,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522197133
-%configure --disable-static --disable-desktop-docs
+export SOURCE_DATE_EPOCH=1522858825
+%configure --disable-static
 make  %{?_smp_mflags}
 
 %check
@@ -117,7 +117,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522197133
+export SOURCE_DATE_EPOCH=1522858825
 rm -rf %{buildroot}
 %make_install
 %find_lang gnome-desktop-3.0
@@ -181,6 +181,67 @@ rm -rf %{buildroot}
 /usr/share/gtk-doc/html/gnome-desktop3/up.png
 /usr/share/gtk-doc/html/gnome-desktop3/wall-clock.html
 /usr/share/gtk-doc/html/gnome-desktop3/xkb-info.html
+/usr/share/help/C/fdl/index.docbook
+/usr/share/help/C/gpl/index.docbook
+/usr/share/help/C/lgpl/index.docbook
+/usr/share/help/ar/fdl/index.docbook
+/usr/share/help/ar/gpl/index.docbook
+/usr/share/help/ar/lgpl/index.docbook
+/usr/share/help/ca/fdl/index.docbook
+/usr/share/help/ca/gpl/index.docbook
+/usr/share/help/ca/lgpl/index.docbook
+/usr/share/help/cs/gpl/index.docbook
+/usr/share/help/de/fdl/index.docbook
+/usr/share/help/de/gpl/index.docbook
+/usr/share/help/de/lgpl/index.docbook
+/usr/share/help/el/fdl/index.docbook
+/usr/share/help/el/gpl/index.docbook
+/usr/share/help/el/lgpl/index.docbook
+/usr/share/help/es/fdl/index.docbook
+/usr/share/help/es/gpl/index.docbook
+/usr/share/help/es/lgpl/index.docbook
+/usr/share/help/eu/fdl/index.docbook
+/usr/share/help/eu/gpl/index.docbook
+/usr/share/help/eu/lgpl/index.docbook
+/usr/share/help/fi/gpl/index.docbook
+/usr/share/help/fi/lgpl/index.docbook
+/usr/share/help/fr/fdl/index.docbook
+/usr/share/help/fr/gpl/index.docbook
+/usr/share/help/fr/lgpl/index.docbook
+/usr/share/help/gl/fdl/index.docbook
+/usr/share/help/gl/gpl/index.docbook
+/usr/share/help/hu/fdl/index.docbook
+/usr/share/help/hu/gpl/index.docbook
+/usr/share/help/hu/lgpl/index.docbook
+/usr/share/help/ko/fdl/index.docbook
+/usr/share/help/ko/gpl/index.docbook
+/usr/share/help/ko/lgpl/index.docbook
+/usr/share/help/nds/gpl/index.docbook
+/usr/share/help/oc/fdl/index.docbook
+/usr/share/help/oc/gpl/index.docbook
+/usr/share/help/oc/lgpl/index.docbook
+/usr/share/help/pa/gpl/index.docbook
+/usr/share/help/pa/lgpl/index.docbook
+/usr/share/help/pt_BR/fdl/index.docbook
+/usr/share/help/pt_BR/gpl/index.docbook
+/usr/share/help/pt_BR/lgpl/index.docbook
+/usr/share/help/sl/fdl/index.docbook
+/usr/share/help/sl/gpl/index.docbook
+/usr/share/help/sl/lgpl/index.docbook
+/usr/share/help/sr/gpl/index.docbook
+/usr/share/help/sr@latin/gpl/index.docbook
+/usr/share/help/sv/fdl/index.docbook
+/usr/share/help/sv/gpl/index.docbook
+/usr/share/help/sv/lgpl/index.docbook
+/usr/share/help/uk/fdl/index.docbook
+/usr/share/help/uk/gpl/index.docbook
+/usr/share/help/uk/lgpl/index.docbook
+/usr/share/help/vi/fdl/index.docbook
+/usr/share/help/vi/gpl/index.docbook
+/usr/share/help/vi/lgpl/index.docbook
+/usr/share/help/zh_CN/fdl/index.docbook
+/usr/share/help/zh_CN/gpl/index.docbook
+/usr/share/help/zh_CN/lgpl/index.docbook
 
 %files lib
 %defattr(-,root,root,-)
