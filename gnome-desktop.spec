@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.28.2
-Release  : 21
+Release  : 22
 URL      : https://download.gnome.org/sources/gnome-desktop/3.28/gnome-desktop-3.28.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.28/gnome-desktop-3.28.2.tar.xz
 Summary  : Utility library for loading .desktop files
