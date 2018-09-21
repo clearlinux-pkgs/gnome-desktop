@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.30.0
-Release  : 23
+Release  : 24
 URL      : https://download.gnome.org/sources/gnome-desktop/3.30/gnome-desktop-3.30.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.30/gnome-desktop-3.30.0.tar.xz
 Summary  : Utility library for loading .desktop files
