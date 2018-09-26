@@ -61,6 +61,7 @@ libgnome-desktop-3.so.17:gnome_idle_monitor_new
 libgnome-desktop-3.so.17:gnome_idle_monitor_new_for_device
 libgnome-desktop-3.so.17:gnome_idle_monitor_remove_watch
 libgnome-desktop-3.so.17:gnome_language_has_translations
+libgnome-desktop-3.so.17:gnome_locale_free
 libgnome-desktop-3.so.17:gnome_normalize_locale
 libgnome-desktop-3.so.17:gnome_parse_locale
 libgnome-desktop-3.so.17:gnome_pnp_ids_get_pnp_id

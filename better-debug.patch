@@ -1,0 +1,242 @@
+--- gnome-desktop-3.30.0/libgnome-desktop/gnome-languages.c~	2018-08-28 19:39:36.000000000 +0000
++++ gnome-desktop-3.30.0/libgnome-desktop/gnome-languages.c	2018-09-08 03:35:43.542560344 +0000
+@@ -71,7 +71,8 @@
+ 
+ static gboolean language_name_is_valid (const char *language_name);
+ 
+-static void
++
++void
+ gnome_locale_free (GnomeLocale *locale)
+ {
+         if (locale == NULL) {
+@@ -87,7 +88,7 @@
+         g_free (locale);
+ }
+ 
+-static char *
++char *
+ normalize_codeset (const char *codeset)
+ {
+         if (codeset == NULL)
+@@ -219,7 +220,7 @@
+         return retval;
+ }
+ 
+-static char *
++char *
+ construct_language_name (const char *language,
+                          const char *territory,
+                          const char *codeset,
+@@ -283,7 +284,7 @@
+         return normalized_name;
+ }
+ 
+-static gboolean
++gboolean
+ language_name_is_valid (const char *language_name)
+ {
+         gboolean  is_valid;
+@@ -297,7 +298,7 @@
+         return is_valid;
+ }
+ 
+-static void
++void
+ language_name_get_codeset_details (const char  *language_name,
+                                    char       **pcodeset,
+                                    gboolean    *is_utf8)
+@@ -370,7 +371,7 @@
+         return has_translations;
+ }
+ 
+-static gboolean
++gboolean
+ add_locale (const char *language_name,
+             gboolean    utf8_only)
+ {
+@@ -453,7 +454,7 @@
+         return TRUE;
+ }
+ 
+-static int
++int
+ select_dirs (const struct dirent *dirent)
+ {
+         int result = 0;
+@@ -482,7 +483,7 @@
+         return result;
+ }
+ 
+-static gboolean
++gboolean
+ collect_locales_from_directory (void)
+ {
+         gboolean found_locales = FALSE;
+@@ -503,7 +504,7 @@
+         return found_locales;
+ }
+ 
+-static gboolean
++gboolean
+ collect_locales_from_localebin (void)
+ {
+         gboolean found_locales = FALSE;
+@@ -532,7 +533,7 @@
+         return found_locales;
+ }
+ 
+-static void
++void
+ count_languages_and_territories (void)
+ {
+ 	gpointer value;
+@@ -565,7 +566,7 @@
+         }
+ }
+ 
+-static void
++void
+ collect_locales (void)
+ {
+         gboolean found_localebin_locales = FALSE;
+@@ -588,7 +589,7 @@
+ 	count_languages_and_territories ();
+ }
+ 
+-static gint
++gint
+ get_language_count (const char *language)
+ {
+         if (gnome_language_count_map == NULL) {
+@@ -598,13 +599,13 @@
+ 	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_language_count_map, language));
+ }
+ 
+-static gboolean
++gboolean
+ is_unique_language (const char *language)
+ {
+         return get_language_count (language) == 1;
+ }
+ 
+-static gint
++gint
+ get_territory_count (const char *territory)
+ {
+         if (gnome_territory_count_map == NULL) {
+@@ -614,13 +615,13 @@
+ 	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_territory_count_map, territory));
+ }
+ 
+-static gboolean
++gboolean
+ is_unique_territory (const char *territory)
+ {
+         return get_territory_count (territory) == 1;
+ }
+ 
+-static gboolean
++gboolean
+ is_fallback_language (const char *code)
+ {
+         const char *fallback_language_names[] = { "C", "POSIX", NULL };
+@@ -635,7 +636,7 @@
+         return FALSE;
+ }
+ 
+-static const char *
++const char *
+ get_language (const char *code)
+ {
+         const char *name;
+@@ -657,7 +658,7 @@
+         return name;
+ }
+ 
+-static char *
++char *
+ get_first_item_in_semicolon_list (const char *list)
+ {
+         char **items;
+@@ -675,7 +676,7 @@
+         return item;
+ }
+ 
+-static char *
++char *
+ capitalize_utf8_string (const char *str)
+ {
+         char first[8] = { 0 };
+@@ -688,7 +689,7 @@
+         return g_strconcat (first, g_utf8_offset_to_pointer (str, 1), NULL);
+ }
+ 
+-static char *
++char *
+ get_translated_language (const char *code,
+                          const char *locale)
+ {
+@@ -724,7 +725,7 @@
+         return name;
+ }
+ 
+-static const char *
++const char *
+ get_territory (const char *code)
+ {
+         const char *name;
+@@ -742,7 +743,7 @@
+         return name;
+ }
+ 
+-static char *
++char *
+ get_translated_territory (const char *code,
+                           const char *locale)
+ {
+@@ -774,7 +775,7 @@
+         return name;
+ }
+ 
+-static void
++void
+ languages_parse_start_tag (GMarkupParseContext      *ctx,
+                            const char               *element_name,
+                            const char              **attr_names,
+@@ -867,7 +868,7 @@
+         }
+ }
+ 
+-static void
++void
+ territories_parse_start_tag (GMarkupParseContext      *ctx,
+                              const char               *element_name,
+                              const char              **attr_names,
+@@ -954,7 +955,7 @@
+         }
+ }
+ 
+-static void
++void
+ languages_variant_init (const char *variant)
+ {
+         gboolean res;
+@@ -993,7 +994,7 @@
+         }
+ }
+ 
+-static void
++void
+ languages_init (void)
+ {
+         if (gnome_languages_map)
+@@ -1005,7 +1006,7 @@
+         languages_variant_init ("iso_639_3");
+ }
+ 
+-static void
++void
+ territories_init (void)
+ {
+         gboolean res;
