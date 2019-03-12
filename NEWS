@@ -1,22 +1,42 @@
-================
-Version 3.30.2.1
-================
-
-- Various fixes for the thumbnailer sandbox (#4, #81, #89, #90)
-- Fix use after free when generating preview icon (#87)
-- Translation updates
-
 ===============
-Version 3.30.2
+Version 3.31.91
 ===============
 
 - Translation updates
 
+===============
+Version 3.31.90
+===============
+
+- Fix slow thumbnailer due to missing font cache (#90)
+- Translation updates
+
 ==============
-Version 3.30.1
+Version 3.31.4
 ==============
 
-- Fix another wall clock regression
+- Fix some thumbnailer sandboxing issues
+- Translation updates
+
+==============
+Version 3.31.3
+==============
+
+- Use LC_TIME for time format string translations
+- Fix a use-after-free in the thumbnailer
+
+==============
+Version 3.31.2
+==============
+
+- Translation updates
+
+===============
+Version 3.31.1
+===============
+
+- Port buildsystem to meson
+- Translation updates
 
 ===============
 Version 3.30.0
