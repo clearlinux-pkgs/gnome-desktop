@@ -4,10 +4,10 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.0
-Release  : 28
+Release  : 29
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.0.tar.xz
-Summary  : Library with common API for various GNOME modules
+Summary  : Utility library for loading .desktop files
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0
 Requires: gnome-desktop-data = %{version}-%{release}
@@ -15,6 +15,7 @@ Requires: gnome-desktop-lib = %{version}-%{release}
 Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
 Requires: gnome-desktop-locales = %{version}-%{release}
+Requires: bubblewrap
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gobject-introspection-dev
@@ -28,6 +29,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(iso-codes)
 BuildRequires : pkgconfig(xkeyboard-config)
 Patch1: better-debug.patch
+Patch2: Mount-CLR-ld.so.cache.patch
 
 %description
 gnome-desktop
@@ -49,7 +51,6 @@ Group: Development
 Requires: gnome-desktop-lib = %{version}-%{release}
 Requires: gnome-desktop-data = %{version}-%{release}
 Provides: gnome-desktop-devel = %{version}-%{release}
-Requires: gnome-desktop = %{version}-%{release}
 
 %description dev
 dev components for the gnome-desktop package.
@@ -102,13 +103,14 @@ locales components for the gnome-desktop package.
 %prep
 %setup -q -n gnome-desktop-3.32.0
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552358684
+export SOURCE_DATE_EPOCH=1553522465
 export LDFLAGS="${LDFLAGS} -fno-lto"
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
