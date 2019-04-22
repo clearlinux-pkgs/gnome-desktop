@@ -4,10 +4,10 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.1
-Release  : 30
+Release  : 32
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.tar.xz
-Summary  : Library with common API for various GNOME modules
+Summary  : Utility library for loading .desktop files
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0
 Requires: gnome-desktop-data = %{version}-%{release}
@@ -19,6 +19,7 @@ Requires: bubblewrap
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gobject-introspection-dev
+BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : itstool
 BuildRequires : libseccomp-dev
 BuildRequires : libxml2-dev
@@ -30,6 +31,7 @@ BuildRequires : pkgconfig(libseccomp)
 BuildRequires : pkgconfig(xkeyboard-config)
 Patch1: better-debug.patch
 Patch2: Mount-CLR-ld.so.cache.patch
+Patch3: CVE-2019-11459.patch
 
 %description
 gnome-desktop
@@ -105,13 +107,19 @@ locales components for the gnome-desktop package.
 %setup -q -n gnome-desktop-3.32.1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554899674
+export SOURCE_DATE_EPOCH=1555975132
+export LDFLAGS="${LDFLAGS} -fno-lto"
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
