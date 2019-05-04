@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.1.2
-Release  : 34
+Release  : 35
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.2.tar.xz
 Summary  : Library with common API for various GNOME modules
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556987128
+export SOURCE_DATE_EPOCH=1557002680
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
