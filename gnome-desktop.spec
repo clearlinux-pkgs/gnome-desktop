@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.1.2
-Release  : 33
+Release  : 34
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.1.2.tar.xz
 Summary  : Library with common API for various GNOME modules
@@ -19,6 +19,7 @@ Requires: bubblewrap
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gobject-introspection-dev
+BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : itstool
 BuildRequires : libseccomp-dev
 BuildRequires : libxml2-dev
@@ -111,11 +112,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556068176
-export CFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export FFLAGS="$CFLAGS -fcf-protection=full -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -fcf-protection=full -fstack-protector-strong "
+export SOURCE_DATE_EPOCH=1556987128
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
+export FCFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
+export FFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
+export CXXFLAGS="$CXXFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
