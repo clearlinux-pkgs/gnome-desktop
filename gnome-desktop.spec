@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.2
-Release  : 36
+Release  : 37
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.2.tar.xz
 Summary  : Library with common API for various GNOME modules
