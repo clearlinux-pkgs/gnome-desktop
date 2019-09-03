@@ -1,2 +1,3 @@
 better-debug.patch
 Mount-CLR-ld.so.cache.patch
+0001-liblocaledir-is-located-in-usr-share-local.patch

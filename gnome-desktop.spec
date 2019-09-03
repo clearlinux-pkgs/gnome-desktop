@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.32.2
-Release  : 37
+Release  : 38
 URL      : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.32/gnome-desktop-3.32.2.tar.xz
 Summary  : Library with common API for various GNOME modules
@@ -16,9 +16,11 @@ Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
 Requires: gnome-desktop-locales = %{version}-%{release}
 Requires: bubblewrap
+BuildRequires : bubblewrap
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gobject-introspection-dev
+BuildRequires : gsettings-desktop-schemas-dev
 BuildRequires : itstool
 BuildRequires : libseccomp-dev
 BuildRequires : libxml2-dev
@@ -30,6 +32,7 @@ BuildRequires : pkgconfig(libseccomp)
 BuildRequires : pkgconfig(xkeyboard-config)
 Patch1: better-debug.patch
 Patch2: Mount-CLR-ld.so.cache.patch
+Patch3: 0001-liblocaledir-is-located-in-usr-share-local.patch
 
 %description
 gnome-desktop
@@ -105,21 +108,23 @@ locales components for the gnome-desktop package.
 %setup -q -n gnome-desktop-3.32.2
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557235300
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1567534962
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export FFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
 
 %install
