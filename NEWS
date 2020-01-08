@@ -1,4 +1,10 @@
 ==============
+Version 3.34.3
+==============
+
+- seccomp is not supported ATM on riscv64 architecture, blacklist it for now (#128)
+
+==============
 Version 3.34.2
 ==============
 
