@@ -1,15 +1,46 @@
-==============
-Version 3.34.3
-==============
+===============
+Version 3.36.0
+===============
 
-- seccomp is not supported ATM on riscv64 architecture, blacklist it for now (#128)
-
-==============
-Version 3.34.2
-==============
-
-- Add helper to create transient systemd scopes
 - Translation updates
+
+===============
+Version 3.35.91
+===============
+
+- Translation updates
+
+===============
+Version 3.35.90
+===============
+
+- Fix crash in idle monitor
+
+==============
+Version 3.35.4
+==============
+
+- Remove unused API not compatible with wayland
+
+==============
+Version 3.35.3
+==============
+
+- Add utility function to start a transient systemd scope
+- Blacklist seccomp on riscv64 architecture as its not supported yet
+- Honor XKB_CONFIG_ROOT environment variable
+
+==============
+Version 3.35.2
+==============
+
+- Fix time display issue with Japanese translation (Tianhao Chai)
+
+==============
+Version 3.35.1
+==============
+
+- No changes
 
 ==============
 Version 3.34.1
