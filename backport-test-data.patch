@@ -1,0 +1,31 @@
+From 51cdf029ee7c186260ec410f5f976b3fcc2e5b3f Mon Sep 17 00:00:00 2001
+From: Ross Burton <ross.burton@intel.com>
+Date: Fri, 17 Apr 2020 12:30:34 +0100
+Subject: [PATCH] tests: install test data to the correct path
+
+Meson was installing the test data to datadir but also telling the
+binaries to look for the test data in libexecdir.
+
+The installed test specification says 'it is highly encouraged for
+components to place test binaries and data in
+$(libexecdir)/installed-tests/$(PACKAGE)-$(PACKAGE_API_VERSION)' so
+unify on libexecdir.
+---
+ tests/meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 224348b6..9076d476 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -54,5 +54,6 @@ if get_option('installed_tests')
+     'ja_JP.utf8.ref.ui',
+     'ja_JP.utf8.ui'
+   )
+-  install_data(test_data + test_metas, install_dir: test_metadir)
++  install_data(test_data, install_dir: test_execdir)
++  install_data(test_metas, install_dir: test_metadir)
+ endif
+-- 
+2.26.0
+

@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 3.36.2
-Release  : 45
+Release  : 46
 URL      : https://download.gnome.org/sources/gnome-desktop/3.36/gnome-desktop-3.36.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/3.36/gnome-desktop-3.36.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -32,6 +32,8 @@ BuildRequires : pkgconfig(xkeyboard-config)
 Patch1: better-debug.patch
 Patch2: Mount-CLR-ld.so.cache.patch
 Patch3: 0001-liblocaledir-is-located-in-usr-share-local.patch
+Patch4: backport-test-data.patch
+Patch5: backport-wallclock-reftest.patch
 
 %description
 gnome-desktop
@@ -103,19 +105,30 @@ Group: Default
 locales components for the gnome-desktop package.
 
 
+%package tests
+Summary: tests components for the gnome-desktop package.
+Group: Default
+Requires: gnome-desktop = %{version}-%{release}
+
+%description tests
+tests components for the gnome-desktop package.
+
+
 %prep
 %setup -q -n gnome-desktop-3.36.2
 cd %{_builddir}/gnome-desktop-3.36.2
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1588218379
+export SOURCE_DATE_EPOCH=1588775887
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -124,15 +137,8 @@ export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -m
 export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dinstalled_tests=true  builddir
 ninja -v -C builddir
-
-%check
-export LANG=C.UTF-8
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-meson test -C builddir || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-desktop
@@ -252,6 +258,19 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/package-licenses/gnome-desktop/4cc77b90af91e615a64ae04893fdffa7939db84c
 /usr/share/package-licenses/gnome-desktop/4f485ab7059ac53d9e3818278ad82217ce976a36
 /usr/share/package-licenses/gnome-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+
+%files tests
+%defattr(-,root,root,-)
+/usr/libexec/installed-tests/gnome-desktop/C.ref.ui
+/usr/libexec/installed-tests/gnome-desktop/C.ui
+/usr/libexec/installed-tests/gnome-desktop/en_US.utf-8.ref.ui
+/usr/libexec/installed-tests/gnome-desktop/en_US.utf-8.ui
+/usr/libexec/installed-tests/gnome-desktop/he_IL.utf8.ref.ui
+/usr/libexec/installed-tests/gnome-desktop/he_IL.utf8.ui
+/usr/libexec/installed-tests/gnome-desktop/wall-clock
+/usr/libexec/installed-tests/gnome-desktop/wallclock-reftest
+/usr/share/installed-tests/gnome-desktop/wall-clock.test
+/usr/share/installed-tests/gnome-desktop/wallclock-reftest.test
 
 %files locales -f gnome-desktop-3.0.lang
 %defattr(-,root,root,-)
