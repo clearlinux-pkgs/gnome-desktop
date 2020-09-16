@@ -141,6 +141,8 @@ libgnome-desktop-3.so.19:gnome_rr_output_info_supports_rotation
 libgnome-desktop-3.so.19:gnome_rr_output_is_builtin_display
 libgnome-desktop-3.so.19:gnome_rr_output_list_modes
 libgnome-desktop-3.so.19:gnome_rr_output_set_backlight
+libgnome-desktop-3.so.19:gnome_rr_output_set_color_transform
+libgnome-desktop-3.so.19:gnome_rr_output_supports_color_transform
 libgnome-desktop-3.so.19:gnome_rr_output_supports_mode
 libgnome-desktop-3.so.19:gnome_rr_output_supports_underscanning
 libgnome-desktop-3.so.19:gnome_rr_screen_get_crtc_by_id

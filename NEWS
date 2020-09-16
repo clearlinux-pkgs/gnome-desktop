@@ -1,37 +1,51 @@
-===============
-Version 3.36.5
-===============
+==============
+Version 3.38.0
+==============
 
-- No changes
-
-===============
-Version 3.36.4
-===============
-
-- tests: Don't run at build-time
 - Translation updates
 
 ===============
-Version 3.36.3
-===============
-
-- thumbnails: keep the orignal file name
-- Fix encoding issue when translating locale modifiers
-- Update wallclock reftest expectations
-- Update Hebrew wallclock expectation
-- Translation updates
-
-===============
-Version 3.36.2
+Version 3.37.92
 ===============
 
 - Translation updates
 
 ===============
-Version 3.36.1
+Version 3.37.91
 ===============
 
+- Allow /etc/alternatives in bubblewrap sandbox (#92, Simon McVittie)
+- Fix bubblewrap sandbox on s390x (!82, Simon McVittie)
+
+===============
+Version 3.37.90
+===============
+
+- systemd: Default to garbage collect failed scopes
+- systemd: Change naming scheme to conform to systemd convention
 - Translation updates
+
+==============
+Version 3.37.3
+==============
+
+- Don't run locale tests at build time (#159, Simon McVittie)
+- Translation updates
+
+===============
+Version 3.37.2
+===============
+
+- languages: Fix encoding issue when translating locale modifiers (#156)
+- thumbnails: keep the orignal file name (#154)
+- Translation updates
+
+===============
+Version 3.37.1
+===============
+
+- rr: add color transform functions
+- remove unused direct x11 dependency
 
 ===============
 Version 3.36.0
