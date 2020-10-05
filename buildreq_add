@@ -1,6 +1,8 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-libxml2-dev
-itstool
 gobject-introspection-dev
+itstool
+libseccomp-dev
+libxml2-dev
 libxml2-python
+pkgconfig(libseccomp)
