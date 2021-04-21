@@ -1,27 +1,35 @@
+============
+Version 40.0
+============
+
+- No changes
+
+===============
+Version 40.rc
+===============
+
+- bg-slide-show: Always parse date/time integers in base 10
+- thumbnail: Fix thumbnailing of CBZ with UTF-8 filenames
+- thumbnail: Fix non-working thumbnailer in Flatpak
+- Translation updates
+
+===============
+Version 40.beta
+===============
+
+- xkbinfo: Update iso639Ids but not iso3166Ids correctly in evdev
+- Translation updates
+
 ==============
-Version 3.38.4
+Version 40.alpha
 ==============
 
-Translation updates
-
-==============
-Version 3.38.3
-==============
-
-Translation updates
-
-==============
-Version 3.38.2
-==============
-
-Translation updates
-
-==============
-Version 3.38.1
-==============
-
-- Use GLib fixed-width types (#168, Christopher Chavez)
-- gnome_bg_slide_show_get_current_slide: add NULL check (#169, Mike Gorse)
+- Add support for x-large and xx-large thumbnail sizes (!99, Bastien Nocera)
+- Make it easier to profile thumbnailers (!94, Bastien Nocera)
+- thumbnailer: Cache GStreamer's plugin registry (!93, Bastien Nocera)
+- Sandbox thumbnailers in Flatpaks (!92, Bastien Nocera)
+- Change default input source to anthy for Japanese (#181, Takao Fujiwara)
+- xkbinfo: use libxkbregistry to parse the rules files (!79, Peter Hutterer)
 - Translation updates
 
 ==============
