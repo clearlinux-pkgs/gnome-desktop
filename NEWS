@@ -1,8 +1,8 @@
 ============
-Version 40.1
-===========
+Version 40.2
+============
 
-- xkbinfo: skip over duplicate layouts
+- Fix crash loading keyboard settings panel (#190, Peter Hutterer)
 - Translation updates
 
 ============
