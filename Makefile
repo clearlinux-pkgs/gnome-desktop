@@ -1,5 +1,5 @@
 PKG_NAME := gnome-desktop
-URL = https://download.gnome.org/sources/gnome-desktop/40/gnome-desktop-40.3.tar.xz
+URL = https://download.gnome.org/sources/gnome-desktop/40/gnome-desktop-40.4.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
