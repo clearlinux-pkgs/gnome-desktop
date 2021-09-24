@@ -7,19 +7,14 @@ Subject: [PATCH] Mount CLR ld.so.cache
  libgnome-desktop/gnome-desktop-thumbnail-script.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/libgnome-desktop/gnome-desktop-thumbnail-script.c b/libgnome-desktop/gnome-desktop-thumbnail-script.c
-index 0331cb3..2d0e8b8 100644
---- a/libgnome-desktop/gnome-desktop-thumbnail-script.c
-+++ b/libgnome-desktop/gnome-desktop-thumbnail-script.c
-@@ -538,7 +538,7 @@ add_bwrap (GPtrArray   *array,
+--- gnome-desktop-41.0/libgnome-desktop/gnome-desktop-thumbnail-script.c~	2021-09-20 18:21:50.000000000 +0000
++++ gnome-desktop-41.0/libgnome-desktop/gnome-desktop-thumbnail-script.c	2021-09-24 15:32:02.083827600 +0000
+@@ -557,7 +557,7 @@
    add_args (array,
  	    "bwrap",
  	    "--ro-bind", "/usr", "/usr",
--	    "--ro-bind", "/etc/ld.so.cache", "/etc/ld.so.cache",
-+	    "--ro-bind", "/var/cache/ldconfig/ld.so.cache", "/var/cache/ldconfig/ld.so.cache",
+-	    "--ro-bind-try", "/etc/ld.so.cache", "/etc/ld.so.cache",
++	    "--ro-bind-try", "/var/cache/ldconfig/ld.so.cache", "/var/cache/ldconfig/ld.so.cache",
  	    NULL);
  
    /* These directories might be symlinks into /usr/... */
--- 
-2.20.1
-
