@@ -4,13 +4,14 @@
 #
 Name     : gnome-desktop
 Version  : 41.0
-Release  : 60
+Release  : 61
 URL      : https://download.gnome.org/sources/gnome-desktop/41/gnome-desktop-41.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/41/gnome-desktop-41.0.tar.xz
 Summary  : Utility library for loading .desktop files
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0
 Requires: gnome-desktop-data = %{version}-%{release}
+Requires: gnome-desktop-filemap = %{version}-%{release}
 Requires: gnome-desktop-lib = %{version}-%{release}
 Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
@@ -67,12 +68,21 @@ Group: Documentation
 doc components for the gnome-desktop package.
 
 
+%package filemap
+Summary: filemap components for the gnome-desktop package.
+Group: Default
+
+%description filemap
+filemap components for the gnome-desktop package.
+
+
 %package lib
 Summary: lib components for the gnome-desktop package.
 Group: Libraries
 Requires: gnome-desktop-data = %{version}-%{release}
 Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
+Requires: gnome-desktop-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gnome-desktop package.
@@ -82,6 +92,7 @@ lib components for the gnome-desktop package.
 Summary: libexec components for the gnome-desktop package.
 Group: Default
 Requires: gnome-desktop-license = %{version}-%{release}
+Requires: gnome-desktop-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the gnome-desktop package.
@@ -118,13 +129,16 @@ cd %{_builddir}/gnome-desktop-41.0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+pushd ..
+cp -a gnome-desktop-41.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1632497648
+export SOURCE_DATE_EPOCH=1634324590
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -135,14 +149,18 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dinstalled_tests=true  builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dinstalled_tests=true  builddiravx2
+ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-desktop
 cp %{_builddir}/gnome-desktop-41.0/COPYING %{buildroot}/usr/share/package-licenses/gnome-desktop/4cc77b90af91e615a64ae04893fdffa7939db84c
 cp %{_builddir}/gnome-desktop-41.0/COPYING-DOCS %{buildroot}/usr/share/package-licenses/gnome-desktop/4f485ab7059ac53d9e3818278ad82217ce976a36
 cp %{_builddir}/gnome-desktop-41.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/gnome-desktop/ba8966e2473a9969bdcab3dc82274c817cfd98a1
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gnome-desktop-3.0
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -241,10 +259,15 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/help/zh_CN/gpl/index.docbook
 /usr/share/help/zh_CN/lgpl/index.docbook
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-gnome-desktop
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libgnome-desktop-3.so.19
 /usr/lib64/libgnome-desktop-3.so.19.1.6
+/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
@@ -255,6 +278,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/gnome-desktop-debug/test-pnp-ids
 /usr/libexec/gnome-desktop-debug/test-wall-clock
 /usr/libexec/gnome-desktop-debug/test-xkb-info
+/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
@@ -277,6 +301,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/gnome-desktop/starttime.xml
 /usr/libexec/installed-tests/gnome-desktop/wall-clock
 /usr/libexec/installed-tests/gnome-desktop/wallclock-reftest
+/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/gnome-desktop/bg-slide-show.test
 /usr/share/installed-tests/gnome-desktop/languages.test
 /usr/share/installed-tests/gnome-desktop/wall-clock.test
