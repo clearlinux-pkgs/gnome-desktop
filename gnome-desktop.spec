@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 41.3
-Release  : 65
+Release  : 66
 URL      : https://download.gnome.org/sources/gnome-desktop/41/gnome-desktop-41.3.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/41/gnome-desktop-41.3.tar.xz
 Summary  : Utility library for loading .desktop files
