@@ -1,16 +1,17 @@
---- gnome-desktop-3.30.0/libgnome-desktop/gnome-languages.c~	2018-08-28 19:39:36.000000000 +0000
-+++ gnome-desktop-3.30.0/libgnome-desktop/gnome-languages.c	2018-09-08 03:35:43.542560344 +0000
-@@ -71,7 +71,8 @@
+diff --git a/libgnome-desktop/gnome-languages.c b/libgnome-desktop/gnome-languages.c
+index 7a0ef6b..eb7195c 100644
+--- a/libgnome-desktop/gnome-languages.c
++++ b/libgnome-desktop/gnome-languages.c
+@@ -76,7 +76,7 @@ static char * construct_language_name (const char *language,
  
  static gboolean language_name_is_valid (const char *language_name);
  
 -static void
-+
 +void
  gnome_locale_free (GnomeLocale *locale)
  {
          if (locale == NULL) {
-@@ -87,7 +88,7 @@
+@@ -92,7 +92,7 @@ gnome_locale_free (GnomeLocale *locale)
          g_free (locale);
  }
  
@@ -19,7 +20,7 @@
  normalize_codeset (const char *codeset)
  {
          if (codeset == NULL)
-@@ -219,7 +220,7 @@
+@@ -224,7 +224,7 @@ gnome_parse_locale (const char *locale,
          return retval;
  }
  
@@ -28,7 +29,7 @@
  construct_language_name (const char *language,
                           const char *territory,
                           const char *codeset,
-@@ -283,7 +284,7 @@
+@@ -288,7 +288,7 @@ gnome_normalize_locale (const char *locale)
          return normalized_name;
  }
  
@@ -36,9 +37,9 @@
 +gboolean
  language_name_is_valid (const char *language_name)
  {
-         gboolean  is_valid;
-@@ -297,7 +298,7 @@
-         return is_valid;
+         locale_t locale;
+@@ -305,7 +305,7 @@ language_name_is_valid (const char *language_name)
+         return FALSE;
  }
  
 -static void
@@ -46,7 +47,7 @@
  language_name_get_codeset_details (const char  *language_name,
                                     char       **pcodeset,
                                     gboolean    *is_utf8)
-@@ -370,7 +371,7 @@
+@@ -381,7 +381,7 @@ gnome_language_has_translations (const char *code)
          return has_translations;
  }
  
@@ -55,7 +56,7 @@
  add_locale (const char *language_name,
              gboolean    utf8_only)
  {
-@@ -453,7 +454,7 @@
+@@ -464,7 +464,7 @@ add_locale (const char *language_name,
          return TRUE;
  }
  
@@ -64,7 +65,7 @@
  select_dirs (const struct dirent *dirent)
  {
          int result = 0;
-@@ -482,7 +483,7 @@
+@@ -493,7 +493,7 @@ select_dirs (const struct dirent *dirent)
          return result;
  }
  
@@ -73,7 +74,7 @@
  collect_locales_from_directory (void)
  {
          gboolean found_locales = FALSE;
-@@ -503,7 +504,7 @@
+@@ -514,7 +514,7 @@ collect_locales_from_directory (void)
          return found_locales;
  }
  
@@ -82,7 +83,7 @@
  collect_locales_from_localebin (void)
  {
          gboolean found_locales = FALSE;
-@@ -532,7 +533,7 @@
+@@ -543,7 +543,7 @@ collect_locales_from_localebin (void)
          return found_locales;
  }
  
@@ -91,7 +92,7 @@
  count_languages_and_territories (void)
  {
  	gpointer value;
-@@ -565,7 +566,7 @@
+@@ -576,7 +576,7 @@ count_languages_and_territories (void)
          }
  }
  
@@ -100,7 +101,7 @@
  collect_locales (void)
  {
          gboolean found_localebin_locales = FALSE;
-@@ -588,7 +589,7 @@
+@@ -599,7 +599,7 @@ collect_locales (void)
  	count_languages_and_territories ();
  }
  
@@ -109,7 +110,7 @@
  get_language_count (const char *language)
  {
          if (gnome_language_count_map == NULL) {
-@@ -598,13 +599,13 @@
+@@ -609,13 +609,13 @@ get_language_count (const char *language)
  	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_language_count_map, language));
  }
  
@@ -125,7 +126,7 @@
  get_territory_count (const char *territory)
  {
          if (gnome_territory_count_map == NULL) {
-@@ -614,13 +615,13 @@
+@@ -625,13 +625,13 @@ get_territory_count (const char *territory)
  	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_territory_count_map, territory));
  }
  
@@ -141,7 +142,7 @@
  is_fallback_language (const char *code)
  {
          const char *fallback_language_names[] = { "C", "POSIX", NULL };
-@@ -635,7 +636,7 @@
+@@ -646,7 +646,7 @@ is_fallback_language (const char *code)
          return FALSE;
  }
  
@@ -150,7 +151,7 @@
  get_language (const char *code)
  {
          const char *name;
-@@ -657,7 +658,7 @@
+@@ -668,7 +668,7 @@ get_language (const char *code)
          return name;
  }
  
@@ -159,7 +160,7 @@
  get_first_item_in_semicolon_list (const char *list)
  {
          char **items;
-@@ -675,7 +676,7 @@
+@@ -686,7 +686,7 @@ get_first_item_in_semicolon_list (const char *list)
          return item;
  }
  
@@ -168,7 +169,7 @@
  capitalize_utf8_string (const char *str)
  {
          char first[8] = { 0 };
-@@ -688,7 +689,7 @@
+@@ -699,7 +699,7 @@ capitalize_utf8_string (const char *str)
          return g_strconcat (first, g_utf8_offset_to_pointer (str, 1), NULL);
  }
  
@@ -177,7 +178,7 @@
  get_translated_language (const char *code,
                           const char *locale)
  {
-@@ -724,7 +725,7 @@
+@@ -739,7 +739,7 @@ get_translated_language (const char *code,
          return name;
  }
  
@@ -186,7 +187,7 @@
  get_territory (const char *code)
  {
          const char *name;
-@@ -742,7 +743,7 @@
+@@ -757,7 +757,7 @@ get_territory (const char *code)
          return name;
  }
  
@@ -195,7 +196,7 @@
  get_translated_territory (const char *code,
                            const char *locale)
  {
-@@ -774,7 +775,7 @@
+@@ -789,7 +789,7 @@ get_translated_territory (const char *code,
          return name;
  }
  
@@ -204,7 +205,7 @@
  languages_parse_start_tag (GMarkupParseContext      *ctx,
                             const char               *element_name,
                             const char              **attr_names,
-@@ -867,7 +868,7 @@
+@@ -893,7 +893,7 @@ languages_parse_start_tag (GMarkupParseContext      *ctx,
          }
  }
  
@@ -213,7 +214,7 @@
  territories_parse_start_tag (GMarkupParseContext      *ctx,
                               const char               *element_name,
                               const char              **attr_names,
-@@ -954,7 +955,7 @@
+@@ -980,7 +980,7 @@ territories_parse_start_tag (GMarkupParseContext      *ctx,
          }
  }
  
@@ -222,7 +223,7 @@
  languages_variant_init (const char *variant)
  {
          gboolean res;
-@@ -993,7 +994,7 @@
+@@ -1019,7 +1019,7 @@ languages_variant_init (const char *variant)
          }
  }
  
@@ -231,7 +232,7 @@
  languages_init (void)
  {
          if (gnome_languages_map)
-@@ -1005,7 +1006,7 @@
+@@ -1034,7 +1034,7 @@ languages_init (void)
          languages_variant_init ("iso_639_3");
  }
  

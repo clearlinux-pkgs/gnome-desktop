@@ -1,4 +1,4 @@
-From 2450bfe9cedebc4450126349a0a07e722f100de1 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
 Date: Mon, 25 Mar 2019 07:20:43 -0600
 Subject: [PATCH] Mount CLR ld.so.cache
@@ -7,9 +7,11 @@ Subject: [PATCH] Mount CLR ld.so.cache
  libgnome-desktop/gnome-desktop-thumbnail-script.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- gnome-desktop-41.0/libgnome-desktop/gnome-desktop-thumbnail-script.c~	2021-09-20 18:21:50.000000000 +0000
-+++ gnome-desktop-41.0/libgnome-desktop/gnome-desktop-thumbnail-script.c	2021-09-24 15:32:02.083827600 +0000
-@@ -557,7 +557,7 @@
+diff --git a/libgnome-desktop/gnome-desktop-thumbnail-script.c b/libgnome-desktop/gnome-desktop-thumbnail-script.c
+index b6c31e9..32665f1 100644
+--- a/libgnome-desktop/gnome-desktop-thumbnail-script.c
++++ b/libgnome-desktop/gnome-desktop-thumbnail-script.c
+@@ -557,7 +557,7 @@ add_bwrap (GPtrArray   *array,
    add_args (array,
  	    "bwrap",
  	    "--ro-bind", "/usr", "/usr",

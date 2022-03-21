@@ -1,14 +1,37 @@
+=============
+Version 42.0
+=============
+
+=============
+Version 42.rc
+=============
+
+- Translation updates
+
+===============
+Version 42.beta
+===============
+
+- Add async methods for thumbnail creation
+- thumbnail: Resolve symlinks before exporting them with Flatpak
+- Make table:cangjie5 the default input method for zh_HK
+- Translation updates
+
 ============
-Version 41.3
+Version 42.alpha.1
 ============
 
-- No changes
+- build: fix soversion in libgnome-desktop-4
 
 ============
-Version 41.2
+Version 42.alpha
 ============
 
-- No changes
+- gnome-languages: fix translation of 3-letter code languages
+- Introduce gnome-desktop-4, libgnome-desktop-3.0 is still available with a build flag
+- Split libgnome-desktop into three, gnome-desktop, gnome-rr, gnome-bg. -rr and -bg depend on gtk4
+- Refactor gnome-gettext-portable.h
+- Translation updates
 
 ============
 Version 41.1

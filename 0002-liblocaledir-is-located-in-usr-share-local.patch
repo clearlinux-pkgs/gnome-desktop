@@ -1,4 +1,4 @@
-From 3bd012fcea50101f3cb4579ec237a25fe4b48614 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
 Date: Tue, 3 Sep 2019 13:09:31 -0500
 Subject: [PATCH] liblocaledir is located in /usr/share/local
@@ -15,18 +15,15 @@ Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/meson.build b/meson.build
-index 1ddf4eb..bcaee37 100644
+index 1dc8a73..84a3dc2 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -30,7 +30,7 @@ prefix = get_option('prefix')
- datadir = join_paths(prefix, get_option('datadir'))
- libexecdir = join_paths(prefix, get_option('libexecdir'))
+@@ -41,7 +41,7 @@ prefix = get_option('prefix')
+ datadir = prefix / get_option('datadir')
+ libexecdir = prefix / get_option('libexecdir')
  
--liblocaledir = join_paths(get_option('prefix'), 'lib', 'locale')
-+liblocaledir = join_paths(datadir, 'locale')
- localedir = join_paths(datadir, 'locale')
- test_metadir = join_paths(datadir, 'installed-tests', meson.project_name())
- test_execdir = join_paths(libexecdir, 'installed-tests', meson.project_name())
--- 
-2.23.0
-
+-liblocaledir = get_option('prefix') / 'lib/locale'
++liblocaledir = datadir / 'locale'
+ localedir = datadir / 'locale'
+ test_metadir = datadir / 'installed-tests' / meson.project_name()
+ test_execdir = libexecdir / 'installed-tests' / meson.project_name()
