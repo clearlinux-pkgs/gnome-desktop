@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 42.2
-Release  : 69
+Release  : 70
 URL      : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654189929
+export SOURCE_DATE_EPOCH=1656035076
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -159,7 +159,7 @@ cp %{_builddir}/gnome-desktop-42.2/COPYING.LIB %{buildroot}/usr/share/package-li
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gnome-desktop-3.0
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -287,6 +287,18 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so.1.2.2
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so.19
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so.19.3.0
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so.1.2.2
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so.1
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so.1.2.2
 /usr/lib64/libgnome-bg-4.so.1
 /usr/lib64/libgnome-bg-4.so.1.2.2
 /usr/lib64/libgnome-desktop-3.so.19
@@ -295,7 +307,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/libgnome-desktop-4.so.1.2.2
 /usr/lib64/libgnome-rr-4.so.1
 /usr/lib64/libgnome-rr-4.so.1.2.2
-/usr/share/clear/optimized-elf/lib*
 
 %files libexec
 %defattr(-,root,root,-)
