@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 42.2
-Release  : 70
+Release  : 71
 URL      : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.2.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.2.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656035076
+export SOURCE_DATE_EPOCH=1656117054
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
