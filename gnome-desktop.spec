@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 42.4
-Release  : 73
+Release  : 74
 URL      : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.4.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/42/gnome-desktop-42.4.tar.xz
 Summary  : Utility library for loading .desktop files
