@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 43
-Release  : 79
+Release  : 80
 URL      : https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.tar.xz
 Summary  : Utility library for loading .desktop files
