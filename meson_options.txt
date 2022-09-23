@@ -1,13 +1,3 @@
-option('gnome_distributor',
-  type: 'string', value: 'GNOME.Org',
-  description: 'Specify name of GNOME distributor'
-)
-
-option('date_in_gnome_version',
-  type: 'boolean', value: true,
-  description: 'Include the build date in gnome-version.xml'
-)
-
 option('desktop_docs',
   type: 'boolean', value: true,
   description: 'Build desktop-wide help documents'
@@ -15,6 +5,10 @@ option('desktop_docs',
 
 option('debug_tools',
   type: 'boolean', value: true, description: 'Build debug tools'
+)
+
+option('introspection',
+  type: 'boolean', value: true, description: 'Whether to build introspection files'
 )
 
 option('udev',

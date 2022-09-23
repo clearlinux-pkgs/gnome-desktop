@@ -1,33 +1,27 @@
-=============
-Version 42.4
-=============
+==========
+Version 43
+==========
 
-- No changes
-
-=============
-Version 42.3
-=============
-
-- No changes
-
-=============
-Version 42.2
-=============
-
-- Don't try to use bubblewrap inside snaps
-
-=============
-Version 42.1
-=============
-
-- Fix build_gtk4 option
 - Translation updates
 
 =============
-Version 42.0
+Version 42.rc
 =============
 
-- No changes
+- gnome-languages: Simplify XPG language parsing
+- Translation updates
+
+=============
+Version 43.alpha
+=============
+
+- Don't use bubblewrap inside snaps since those are already sandboxed
+- Remove gnome-version.xml
+- Add GCancellable and GError to the thumbnail API
+- Make it possible to disable gobject-introspection generation
+- Revert "thumbnails: keep the original file name"
+- Include a header defining GNOME_DESKTOP_PLATFORM_VERSION
+- Translation updates
 
 =============
 Version 42.rc
