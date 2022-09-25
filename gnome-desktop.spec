@@ -4,7 +4,7 @@
 #
 Name     : gnome-desktop
 Version  : 43
-Release  : 80
+Release  : 81
 URL      : https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/43/gnome-desktop-43.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -137,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1663951745
+export SOURCE_DATE_EPOCH=1664148175
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
