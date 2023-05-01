@@ -5,14 +5,13 @@
 #
 Name     : gnome-desktop
 Version  : 44.0
-Release  : 88
+Release  : 89
 URL      : https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.0.tar.xz
 Summary  : Utility library for loading .desktop files
 Group    : Development/Tools
 License  : GFDL-1.1 GPL-2.0 LGPL-2.0
 Requires: gnome-desktop-data = %{version}-%{release}
-Requires: gnome-desktop-filemap = %{version}-%{release}
 Requires: gnome-desktop-lib = %{version}-%{release}
 Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
@@ -71,21 +70,12 @@ Group: Documentation
 doc components for the gnome-desktop package.
 
 
-%package filemap
-Summary: filemap components for the gnome-desktop package.
-Group: Default
-
-%description filemap
-filemap components for the gnome-desktop package.
-
-
 %package lib
 Summary: lib components for the gnome-desktop package.
 Group: Libraries
 Requires: gnome-desktop-data = %{version}-%{release}
 Requires: gnome-desktop-libexec = %{version}-%{release}
 Requires: gnome-desktop-license = %{version}-%{release}
-Requires: gnome-desktop-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gnome-desktop package.
@@ -95,7 +85,6 @@ lib components for the gnome-desktop package.
 Summary: libexec components for the gnome-desktop package.
 Group: Default
 Requires: gnome-desktop-license = %{version}-%{release}
-Requires: gnome-desktop-filemap = %{version}-%{release}
 
 %description libexec
 libexec components for the gnome-desktop package.
@@ -141,15 +130,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680028131
+export SOURCE_DATE_EPOCH=1682973635
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dinstalled_tests=true  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dinstalled_tests=true  builddiravx2
@@ -178,6 +167,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libgnome-bg-4.so
+/V3/usr/lib64/libgnome-desktop-3.so
+/V3/usr/lib64/libgnome-desktop-4.so
+/V3/usr/lib64/libgnome-rr-4.so
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-crossfade.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-slide-show.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg.h
@@ -206,10 +199,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/include/gnome-desktop-4.0/libgnome-desktop/gnome-systemd.h
 /usr/include/gnome-desktop-4.0/libgnome-desktop/gnome-wall-clock.h
 /usr/include/gnome-desktop-4.0/libgnome-desktop/gnome-xkb-info.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so
 /usr/lib64/libgnome-bg-4.so
 /usr/lib64/libgnome-desktop-3.so
 /usr/lib64/libgnome-desktop-4.so
@@ -293,20 +282,16 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/help/zh_CN/gpl/index.docbook
 /usr/share/help/zh_CN/lgpl/index.docbook
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-gnome-desktop
-
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so.2
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-bg-4.so.2.1.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so.20
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-3.so.20.0.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so.2
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-desktop-4.so.2.1.0
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so.2
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgnome-rr-4.so.2.1.0
+/V3/usr/lib64/libgnome-bg-4.so.2
+/V3/usr/lib64/libgnome-bg-4.so.2.1.0
+/V3/usr/lib64/libgnome-desktop-3.so.20
+/V3/usr/lib64/libgnome-desktop-3.so.20.0.0
+/V3/usr/lib64/libgnome-desktop-4.so.2
+/V3/usr/lib64/libgnome-desktop-4.so.2.1.0
+/V3/usr/lib64/libgnome-rr-4.so.2
+/V3/usr/lib64/libgnome-rr-4.so.2.1.0
 /usr/lib64/libgnome-bg-4.so.2
 /usr/lib64/libgnome-bg-4.so.2.1.0
 /usr/lib64/libgnome-desktop-3.so.20
@@ -318,6 +303,13 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/gnome-desktop-debug/gnome-rr-debug
+/V3/usr/libexec/gnome-desktop-debug/test-desktop-thumbnail
+/V3/usr/libexec/gnome-desktop-debug/test-idle-monitor
+/V3/usr/libexec/gnome-desktop-debug/test-languages
+/V3/usr/libexec/gnome-desktop-debug/test-pnp-ids
+/V3/usr/libexec/gnome-desktop-debug/test-wall-clock
+/V3/usr/libexec/gnome-desktop-debug/test-xkb-info
 /usr/libexec/gnome-desktop-debug/gnome-rr-debug
 /usr/libexec/gnome-desktop-debug/test-desktop-thumbnail
 /usr/libexec/gnome-desktop-debug/test-idle-monitor
@@ -325,7 +317,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/gnome-desktop-debug/test-pnp-ids
 /usr/libexec/gnome-desktop-debug/test-wall-clock
 /usr/libexec/gnome-desktop-debug/test-xkb-info
-/usr/share/clear/optimized-elf/exec*
 
 %files license
 %defattr(0644,root,root,0755)
@@ -335,6 +326,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files tests
 %defattr(-,root,root,-)
+/V3/usr/libexec/installed-tests/gnome-desktop/bg-slide-show
+/V3/usr/libexec/installed-tests/gnome-desktop/languages
+/V3/usr/libexec/installed-tests/gnome-desktop/wall-clock
+/V3/usr/libexec/installed-tests/gnome-desktop/wallclock-reftest
 /usr/libexec/installed-tests/gnome-desktop/C.ref.ui
 /usr/libexec/installed-tests/gnome-desktop/C.ui
 /usr/libexec/installed-tests/gnome-desktop/bg-slide-show
@@ -348,7 +343,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/libexec/installed-tests/gnome-desktop/starttime.xml
 /usr/libexec/installed-tests/gnome-desktop/wall-clock
 /usr/libexec/installed-tests/gnome-desktop/wallclock-reftest
-/usr/share/clear/optimized-elf/test*
 /usr/share/installed-tests/gnome-desktop/bg-slide-show.test
 /usr/share/installed-tests/gnome-desktop/languages.test
 /usr/share/installed-tests/gnome-desktop/wall-clock.test
