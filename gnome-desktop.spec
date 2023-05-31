@@ -5,7 +5,7 @@
 #
 Name     : gnome-desktop
 Version  : 44.0
-Release  : 89
+Release  : 90
 URL      : https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.0.tar.xz
 Summary  : Utility library for loading .desktop files
@@ -130,7 +130,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682973635
+export SOURCE_DATE_EPOCH=1685511104
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -167,10 +167,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgnome-bg-4.so
-/V3/usr/lib64/libgnome-desktop-3.so
-/V3/usr/lib64/libgnome-desktop-4.so
-/V3/usr/lib64/libgnome-rr-4.so
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-crossfade.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg-slide-show.h
 /usr/include/gnome-desktop-3.0/libgnome-desktop/gnome-bg.h
@@ -284,13 +280,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgnome-bg-4.so.2
 /V3/usr/lib64/libgnome-bg-4.so.2.1.0
-/V3/usr/lib64/libgnome-desktop-3.so.20
 /V3/usr/lib64/libgnome-desktop-3.so.20.0.0
-/V3/usr/lib64/libgnome-desktop-4.so.2
 /V3/usr/lib64/libgnome-desktop-4.so.2.1.0
-/V3/usr/lib64/libgnome-rr-4.so.2
 /V3/usr/lib64/libgnome-rr-4.so.2.1.0
 /usr/lib64/libgnome-bg-4.so.2
 /usr/lib64/libgnome-bg-4.so.2.1.0
